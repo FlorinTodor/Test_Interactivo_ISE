@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Interactivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .answer {
+            display: block;
+            background-color: #555;
+            color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .answer:hover {
+            background-color: #777;
+        }
+        #next-button, #start-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #next-button:hover, #start-button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #score-container {
+            display: none;
+        }
+        #incorrect-questions-container {
+            display: none;
+            margin-top: 20px;
+        }
+        ul {
+            padding-left: 0;
+            list-style-type: none;
+            text-align: left;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        #reset-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #reset-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tests ISE</h1>
+        <h2 id="author-name">Florin Emanuel Todor Gliga</h2>
+        <div id="question-container">
+            <p id="question">Haz click en "Comenzar Test" para empezar. Disfruta Max puntuacion es 4 puntos</p>
+            <div id="question-options">
+                <button onclick="checkAnswer('V')" class="answer-button">Verdadero</button>
+                <button onclick="checkAnswer('F')" class="answer-button">Falso</button>
+            </div>
+        </div>
+        <div class="button-container" id="answer-buttons" style="display: none;">
+            <!-- No se necesitan botones aquí para las opciones -->
+        </div>
+        <button id="next-button" onclick="nextQuestion()" style="display: none;">Siguiente Pregunta</button>
+        <div>
+            <p>Respondidas: <span id="answered-count">0</span></p>
+            <p>Aciertos: <span id="correct-count">0</span></p>
+            <p>Fallos: <span id="incorrect-count">0</span></p>
+            <p>Preguntas disponibles: <span id="available-questions-count">0</span></p>
+            <p id="score-container" style="display: none;">Nota: <span id="score">0</span></p>
+        </div>
+        <div id="incorrect-questions-container" style="display: none;">
+            <h3>Preguntas falladas:</h3>
+            <ul id="incorrect-questions-list"></ul>
+        </div>
+        <button id="start-button" onclick="startTest()">Comenzar Test</button>
+        
+    </div>
+
+    <script>
+
+const allQuestions = [
+    {"question": "TOP ES UN MONITOR INTERACTIVO", "correct": "" },
+    { "question": "PERF requiere instrumentalizar el programa a monitorizar", "correct": "" },
+    { "question": "En un call graph, las flechas indican el número de veces que una función llama a otra. Este número siempre es un entero", "correct": "" },
+    { "question": "Valgrind es un ejemplo de monitor", "correct": "" },
+    { "question": "El valor de un resultado peak de SPEC SPEED son siempre menores que el resultado base", "correct": "F" },
+    { "question": "El teorema del Límite central nos dice que la media de un conjunto grande de muestras aleatorias de cualquier distribución e independientes entre sí pertenece a una distribución t-student.", "correct": "" },
+    { "question": "En análisis operacional Li siempre es menor que Ai.", "correct": "" },
+    { "question": "Un servidor en una red cerrada( con colas lo suficientemente grandes) siempre está en equilibrio de flujo", "correct": "V" },
+    { "question": "Ro-min es la suma de las demandas de servicio de las estaciones del servidor.", "correct": "" },
+    { "question": "Si añado una nueva CPU a nuestro servidor, el tiempo mínimo medio de respuesta del servidor seguro que disminuye.", "correct": "" },
+    { "question": "El tiempo de respuesta es la inversa de la productividad.", "correct": "" },
+    { "question": "Un sistema escalable es extensible: ", "correct": " " }, // PUEDE SER V
+    { "question": "Una placa base es un SOC.", "correct": "" },
+    { "question": "Los procesadores que entran en un zócalo PGA tienen patillas.", "correct": "" },
+    { "question": "Una celda de memoria SRAM tiene más componentes que una DRAM", "correct": "V" },
+    { "question": "Un modelo de memoria RAM con chips en ambas caras tiene dos rangos", "correct": "F" },
+    { "question": "RAID 5 distribuye bits de redundacia entre varios discos", "correct": "" },
+    { "question": "Un disco duro SAS se conecta con un único cable a la placa base.", "correct": "" },
+    { "question": "Si conecto un periférico plug & play puedo usarlo directamente sin reiniciar", "correct": "V" },
+    { "question": "Un monitor por muestreo se basa en información estadística", "correct": "" },
+
+
+
+
+
+    /// RESPONDIDAS
+{question: "Un módulo de DRAM con chips en ambas caras no tiene por qué ser de doble rango (dual ranked)", correct: "V"},
+{question: "Con almacenamiento permanente queremos indicar que el dispositivo es de solo lectura y que el dato se va a quedar escrito en el dispositivo de forma permanente", correct: "F"},
+{question: "Con un conector SATA de la placa base puedo conectar 4 discos mini SAS", correct: "F"},
+{question: "La precisión de un sensor está relaciona con la dispersión de las medidas que realiza.", correct: "V"},
+{question: "Con carga del sistema, el S.O Linux se refiere al número de procesos en modo running, runnable o I/O blocked", correct: "V"},
+{question: "La hipótesis inicial de un test t es que los rendimientos de ambas alternativas a analizar son estadísticamente diferentes.", correct: "F"},
+{question: "Actuando sobre el elemento con mayor razón de visita nos garantizamos mejorar la productividad máxima de un servidor", correct: "F"},
+{question: "La razón media de visita de un dispositivo no tiene por qué ser un número entero", correct: "V"},
+{question: "En un servidor, si la demanda de servicio de un dispositivo es menor que la de otro, su utilización nunca podrá ser mayor que la de ese otro dispositivo", correct: "V"},
+{question: "La razón media de visita de un dispositivo no tiene por qué ser un número entero", correct: "V"},
+{question: "En un servidor modelado mediante una red de colas se cumple que Bi = (Ni- Qi) * T", correct: "V"},
+{question: "La memoria técnica que presenta cada licitador no podrá hacer referencia a una fabricación o una procedencia determinada con la finalidad de favorece o descarta ciertas empresas o ciertos podructos. Si no es posible, se acompañará la mención << o equivalente>>.", correct: "V"},
+{question: "En el panel trasero de la placa base de un servidor es habitual encontrar varios conectores para Ethernet", correct: "V"},
+{question: "Si la sumatoria de i=1 hasta k de Ui > 1 el servidor está saturado", correct: "F"},
+
+
+
+
+
+
+
+{question: "Si un módulo DRAM tiene chips en ambas caras se denomina módulo con 2 rangos.", correct: "F"},
+{question: "Un módulo de DRAM DDR4 con ECC 2Rx4 tiene 36 chips.", correct: "V"},
+{question: "Las tarjetas que usaban las ranuras ISA tenían que ser pre-configuradas para asignarles la interrupción que correspondía a cada una.", correct: "V"},
+{question: "Podemos mejorar la escalabilidad de un servidor utilizando RAID 1.", correct: "F"},
+{question: "Si una interfaz es Plug and Play podemos cambiar componentes en caliente (sin reiniciar).", correct: "F"},
+{question: "Un SSD con MLC es menos fiable que uno SLC.", correct: "V"},
+{question: "Un disco SAS usa un único conector que unifica tanto los cables de alimentación procedentes de fuente de alimentación como los de datos, procedentes de la placa base.", correct: "V"},
+{question: "Los chips de la serie AMD Opteron X son SoC.", correct: "V"},
+{question: "AGP tiene más ancho de banda que PCI.", correct: "V"},
+{question: "Con la Ley de Amdahl podemos estimar la ganancia en velocidad de la ejecución de un único trabajo en un computador después de mejorar k veces un componente.", correct: "V"},
+{question: "Las prestaciones de un servidor no se ven afectadas por la configuración de la memoria virtual.", correct: "F"},
+{question: "La ganancia en velocidad siempre es un número comprendido entre 0 y 2, ambos inclusive. ", correct: "F"},
+{question: "Es poco frecuente que las placas de los servidores tengan conectores VGA en el panel trasero.", correct: "F"},
+{question: "El protocolo USB 2.0 es half-duplex", correct: "V"},
+{question: "El puente sur del chipset es el encargado de las transferencias entre el puente norte y el resto de periféricos con menores exigencias de velocidad de la placa.", correct: "V"},
+{question: "En un test t, el valor-p equivale esencialmente a la probabilidad de que la hipótesis nula sea falsa.", correct: "F"},
+{question: "La hipótesis de partida de un test ANOVA es que el factor que se está estudiando influye en el rendimiento.", correct: "F"},
+{question: "Con “sar -u”, sin más argumentos, iremos obteniendo la información de la utilización global del procesador desde el momento actual en adelante.", correct: "F"},
+{question: "Un microbenchmark también suele denominarse benchmark de sistema completo.", correct: "F"},
+{question: "Si la suma de las utilizaciones de los dispositivos de un servidor es mayor que 1, el servidor está saturado.", correct: "F"},
+{question: "Decimos que un servidor es fiable si se encuentra operativo.", correct: "F"},
+{question: "Podemos aumentar la escalabilidad de un servidor añadiendo fuentes de alimentación redundantes.", correct: "F"},
+{question: "Los procesadores para servidores suelen tener más canales de memoria que los de CPU en la misma generación.", correct: "V"},
+{question: "Las unidades de estado sólido (SSD) son capaces de alcanzar anchos de banda superiores a los que el protocolo SATA-3 puede proporcionar.", correct: "V"},
+{question: "El primer procesador con un conjunto de instrucciones de 64 bits lo diseñó AMD a principios de los 2000. ", correct: "F"},
+{question: "La ‘S’ del acrónimo SRAM es por Synchronous.", correct: "F"},
+{question: "Un módulo de RAM con chips a los dos lados tiene dos rangos.", correct: "F"},
+{question: "Puedo conectar una tarjeta PCIe 2.0 en un conector PCIe 4.0 de la placa base, pero no al revés.", correct: "F"},
+{question: "PCIe 2.0 x4 tiene un ancho de banda de 2GB/s en cada sentido.", correct: "V"},
+{question: "Puedo conectar un disco SATA usando un controlador SAS de la placa, pero no un disco SAS usando el controlador SATA de la placa.", correct: "V"},
+{question: "Una celda básica SRAM tiene más componentes electrónicos que una DRAM.", correct: "V"},
+{question: "AMD ofrece los procesadores EPYC para el mercado de sobremesa y OPTERON para servidor.", correct: "F"},
+{question: "SO-DIMM es un tipo de memoria pensada para servidores.", correct: "F"},
+{question: "En la jerarquía de memoria de un computador, la memoria LLC tiene menor latencia que la DRAM.", correct: "V"},
+{question: "El conjunto de instrucciones que ejecutan el auto-test de arranque (power on self-test) se encuentran almacenadas en la ROM/Flash BIOS de la placa.", correct: "V"},
+{question: "Es el propio microprocesador de muchas placas bases actuales el que realiza la función de puente norte del chipset.", correct: "V"},
+{question: "Para diagnosticar si una memoria RAM funciona correctamente debemos utilizar un benchmark específico para memorias RAM.", correct: "F"},
+{question: "Si NT >> NT* el servidor dejará de estar en equilibrio de flujo (para el caso de redes cerradas).", correct: "F"},
+{question: "Las principales medidas de prestaciones se basan en tiempos de respuesta (o latencias) y en productividades (o anchos de banda). ", correct: "V"},
+{question: "Todos los sistemas escalables son extensibles pero no a la inversa.", correct: "V"},
+{question: "Xeon es una familia de procesadores de IBM especialmente dirigida a servidores.", correct: "F"},
+{question: "La familia “AMD Opteron X Series” usa microprocesadores ARM", correct: "F"},
+{question: "La celda básica de una SRAM es mayor que la de una DRAM.", correct: "V"},
+{question: "El voltaje que usa un módulo DDR4 es menor que el de un módulo DDR3.", correct: "V"},
+{question: "Las latencias de las unidades de cinta suelen ser muy bajas, ya que hay que rebobinar la cinta hasta que el cabezal se encuentre en la posición deseada.", correct: "F"},
+{question: "AHCI es una interfaz para facilitar la conexión SSD a través de PCIe.", correct: "F"},
+{question: "SAS es full-duplex.", correct: "V"},
+{question: "A través del “system panel” se puede conectar el altavoz del chasis a la placa base.", correct: "V"},
+{question: "La pila que hay en la placa base sirve, entre otras cosas, para tener el reloj en tiempo real de dicha placa actualizado.", correct: "V"},
+{question: "Existen servidores con fuentes de alimentación remplazables en caliente (hot swappable).", correct: "V"},
+{question: "El puente sur del chipset se encarga de la comunicación con la DRAM.", correct: "F"},
+{question: "En saturación, el cuello de botella está al máximo de su productividad.", correct: "V"},
+{question: "Si la suma de todas las utilizaciones es mayor que 1 el servidor está saturado.", correct: "F"},
+{question: "R0 = R1+R2+…Rk.", correct: "F"},
+{question: "La demanda media de servicio de un dispositivo en el seno de un servidor nunca puede ser menor que su tiempo de servicio.", correct: "F"},
+{question: "Si ejecutamos la línea “sar -d” en un servidor con sar instalado, iremos obteniendo información sobre las transferencias de cada disco del servidor de forma interactiva.", correct: "F"},
+{question: "C0 es un valor medio calculado durante un periodo de monitorización T.", correct: "F"},
+{question: "gprof basa su información en lo que obtiene leyendo de /proc", correct: "F"},
+{question: "En una placa de un PC es habitual encontrar tanto conectores SATA como SAS.", correct: "F"},
+{question: "En un test t, el valor p obtenido depende del nivel de confianza seleccionado.", correct: "F"},
+{question: "La versión serie de la interfaz SCSI se llama M.2, también conocida como NGFF", correct: "F"},
+{question: "El conjunto de instrucciones que ejecutan el auto-test de arranque (power On self-test) se encuentran almacenadas en la ROM/Flash BIOS de la placa", correct: "V"},
+{question: "La precisión de un sensor se refiere esencialmente a cómo se aproximan las medidas que toman al valor verdadero.", correct: "F"},
+{question: "Tanto PCI como PCIe definen un protocolo de comunicación serie punto a punto.", correct: "F"},
+{question: "Los protocolos de comunicación serie pueden ser half-duplex", correct: "V"},
+{question: "Cuando nos referimos al índice de prestaciones que se calcula según el benchmark SPEC CPU2017, el SPEC pico (peak) nunca puede ser menor que el SPEC base.", correct: "V"},
+{question: "Tanto las SRAM como las DRAM son volátiles, pero solo las DRAM necesitan refresco.", correct: "V"},
+{question: "En los benchmarks TPC-C, TPC-H, el índice de prestaciones se calcula a partir de la media geométrica de las ganancias de velocidad con respecto a una máquina de referencia.", correct: "F"},
+{question: "Qi = X0 *Wi.", correct: "F"},
+{question: "La transmisión de información entre un módulo de memoria de tipo DDR4 y la CPU es half duplex.", correct: "V"},
+{question: "La expresión Wi = Ni*Si es una ley operacional.", correct: "F"},
+{question: "Es la media aritmética y no el índice SPEC el que nos ayuda a saber qué computadora ejecuta el conjunto total de programas benchmark en menos tiempo.", correct: "V"},
+{question: "El módulo regulador de voltaje, entre otras cosas, convierte la corriente alterna en corriente continua.", correct: "F"},
+{question: "Si el número total de usuarios de un servidor modelado mediante una red de colas cerrada interactiva es superior a NT*, entonces el servidor está saturado.", correct: "F"},
+{question: "Las pistas en una placa base están hechas de una resina no conductora y no inflamable.", correct: "F"},
+{question: "La expresión Qi = lamdai * Wi es válida, aunque el servidor esté saturado.", correct: "V"},
+{question: "Jugando con las distintas configuraciones de un RAID se puede conseguir más fiabilidad o más disponibilidad pero no mayores prestaciones.", correct: "F"},
+{question: "SATA-3 usa codificación 128b/130b.", correct: "F"},
+{question: "Sar es un monitor software por eventos.", correct: "F"},
+{question: "La pasta térmica es un aislante que evita que el calor salga de la CPU.", correct: "F"},
+{question: "El fenómeno llamado “timing skew” motivó la aparición de protocolos paralelos como P-ATA (también llamado IDE) o PCI.", correct: "F"},
+{question: "Las primeras instrucciones que ejecuta un procesador en el arranque proceden de las primeras direcciones de la DRAM.", correct: "F"},
+{question: "Una de las líneas del protocolo PCIe se usa en exclusiva para transmitir la señal del reloj.", correct: "F"},
+{question: "eDonkey es un ejemplo de Arquitectura Cliente/Servidor de varios niveles.", correct: "F"},
+
+
+];
+
+
+const questionsPerTest = 20;
+        let availableQuestions = JSON.parse(localStorage.getItem('availableQuestions')) || allQuestions.slice();
+        let shuffledQuestions, currentQuestionIndex;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let answeredCount = 0;
+        let incorrectQuestions = [];
+
+        document.getElementById('available-questions-count').textContent = availableQuestions.length;
+
+        function startTest() {
+            if (availableQuestions.length === 0) {
+                alert('Reiniciando preguntas...');
+                resetQuestions();
+            }
+
+            correctCount = 0;
+            incorrectCount = 0;
+            answeredCount = 0;
+            incorrectQuestions = [];
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('incorrect-count').textContent = incorrectCount;
+            document.getElementById('answered-count').textContent = answeredCount;
+            document.getElementById('score-container').style.display = 'none';
+            document.getElementById('incorrect-questions-container').style.display = 'none';
+            document.getElementById('incorrect-questions-list').innerHTML = '';
+            shuffledQuestions = availableQuestions.sort(() => Math.random() - 0.5).slice(0, questionsPerTest);
+            currentQuestionIndex = 0;
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('next-button').style.display = 'none';
+            document.getElementById('answer-buttons').style.display = 'block';
+            document.getElementById('author-name').style.display = 'none';
+            showQuestion(shuffledQuestions[currentQuestionIndex]);
+        }
+
+        function resetQuestions() {
+            availableQuestions = allQuestions.slice();
+            localStorage.setItem('availableQuestions', JSON.stringify(availableQuestions));
+            document.getElementById('available-questions-count').textContent = availableQuestions.length;
+        }
+
+        function showQuestion(question) {
+            document.getElementById('question').innerText = question.question;
+            enableAnswerButtons();
+        }
+
+        function checkAnswer(answer) {
+            const question = shuffledQuestions[currentQuestionIndex];
+            if (answer === question.correct) {
+                document.getElementById('question').style.color = 'green';
+                correctCount++;
+                availableQuestions = availableQuestions.filter(q => q.question !== question.question);
+                localStorage.setItem('availableQuestions', JSON.stringify(availableQuestions));
+                document.getElementById('available-questions-count').textContent = availableQuestions.length;
+            } else {
+                document.getElementById('question').style.color = 'red';
+                incorrectCount++;
+                incorrectQuestions.push({ question: question.question, answer: answer });
+            }
+            answeredCount++;
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('incorrect-count').textContent = incorrectCount;
+            document.getElementById('answered-count').textContent = answeredCount;
+            disableAnswerButtons();
+            document.getElementById('next-button').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                showQuestion(shuffledQuestions[currentQuestionIndex]);
+                document.getElementById('question').style.color = 'white';
+                document.getElementById('next-button').style.display = 'none';
+                document.getElementById('answer-buttons').style.display = 'block';
+            } else if (availableQuestions.length === 0) {
+                alert('Reiniciando preguntas...');
+                resetQuestions();
+                startTest();
+            } else {
+                const score = (correctCount * 0.2 - incorrectCount * 0.2);
+                document.getElementById('question').innerText = `Test terminado. Aciertos: ${correctCount}, Fallos: ${incorrectCount}, Nota: ${score.toFixed(2)}`;
+                document.getElementById('score').textContent = score.toFixed(2);
+                document.getElementById('score-container').style.display = 'block';
+                document.getElementById('next-button').style.display = 'none';
+                document.getElementById('start-button').style.display = 'block';
+                document.getElementById('author-name').style.display = 'block';
+                showIncorrectQuestions();
+            }
+        }
+
+        function showIncorrectQuestions() {
+            const incorrectQuestionsContainer = document.getElementById('incorrect-questions-container');
+            const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+            incorrectQuestions.forEach(entry => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${entry.question} (Tu respuesta: ${entry.answer})`;
+                incorrectQuestionsList.appendChild(listItem);
+            });
+            incorrectQuestionsContainer.style.display = 'block';
+        }
+
+        function disableAnswerButtons() {
+            const buttons = document.querySelectorAll('.answer-button');
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        function enableAnswerButtons() {
+            const buttons = document.querySelectorAll('.answer-button');
+            buttons.forEach(button => {
+                button.disabled = false;
+            });
+        }
+    </script>
+    <button id="reset-button" onclick="resetQuestions()">Reiniciar Preguntas</button>
+</body>
+</html>
