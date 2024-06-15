@@ -139,32 +139,74 @@
     <script>
 
 const allQuestions = [
-    {"question": "TOP ES UN MONITOR INTERACTIVO", "correct": "" },
-    { "question": "PERF requiere instrumentalizar el programa a monitorizar", "correct": "" },
-    { "question": "En un call graph, las flechas indican el número de veces que una función llama a otra. Este número siempre es un entero", "correct": "" },
-    { "question": "Valgrind es un ejemplo de monitor", "correct": "" },
-    { "question": "El valor de un resultado peak de SPEC SPEED son siempre menores que el resultado base", "correct": "F" },
-    { "question": "El teorema del Límite central nos dice que la media de un conjunto grande de muestras aleatorias de cualquier distribución e independientes entre sí pertenece a una distribución t-student.", "correct": "" },
-    { "question": "En análisis operacional Li siempre es menor que Ai.", "correct": "" },
-    { "question": "Un servidor en una red cerrada( con colas lo suficientemente grandes) siempre está en equilibrio de flujo", "correct": "V" },
-    { "question": "Ro-min es la suma de las demandas de servicio de las estaciones del servidor.", "correct": "" },
-    { "question": "Si añado una nueva CPU a nuestro servidor, el tiempo mínimo medio de respuesta del servidor seguro que disminuye.", "correct": "" },
-    { "question": "El tiempo de respuesta es la inversa de la productividad.", "correct": "" },
-    { "question": "Un sistema escalable es extensible: ", "correct": " " }, // PUEDE SER V
-    { "question": "Una placa base es un SOC.", "correct": "" },
-    { "question": "Los procesadores que entran en un zócalo PGA tienen patillas.", "correct": "" },
-    { "question": "Una celda de memoria SRAM tiene más componentes que una DRAM", "correct": "V" },
-    { "question": "Un modelo de memoria RAM con chips en ambas caras tiene dos rangos", "correct": "F" },
-    { "question": "RAID 5 distribuye bits de redundacia entre varios discos", "correct": "" },
-    { "question": "Un disco duro SAS se conecta con un único cable a la placa base.", "correct": "" },
-    { "question": "Si conecto un periférico plug & play puedo usarlo directamente sin reiniciar", "correct": "V" },
-    { "question": "Un monitor por muestreo se basa en información estadística", "correct": "" },
+    
+    
+   
+
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
 
 
     /// RESPONDIDAS
+{ "question": "Si añado una nueva CPU a nuestro servidor, el tiempo mínimo medio de respuesta del servidor seguro que disminuye.", "correct": "F" },
+{question: "Un servidor que siempre me da respuesta, pero que a veces me da respuestas incorrectas, tiene una disponibilidad del 100%.", correct: "V"},
+{question: "Con sar -P 1 puedo conocer el estado del proceso con id=1.", correct: "F"},
+{question: "Cuando nos referimos al método USE para la monitorización del rendimiento de un servidor, la S de USE viene de Saturation", correct: "V"},
+{question: "Un zócalo PGA tiene agujeritos para que entren las patillas del procesador.", correct: "V"},
+{question: "Un microprocesador puede acceder a la vez a dos módulos de memoria del banco de un mismo canal.", correct: "F"},
+{question: "PCIe 5.0 usa codificación 8b/10b.", correct: "F"},
+{question: "No solo se puede conectar una tarjeta PCIe 2.0 en una ranura PCIe 5.0 de la placa base, sino que también se puede conectar una tarjeta PCIe 5.0 en una ranura PCIe 2.0 de la placa base.", correct: "V"},
+{question: "A través del System Panel (o Front Panel) se puede conectar un dispositivo USB del chasis a la placa base.", correct: "F"},
+{question: "Las placas de servidores suelen tener un conector VGA en el panel trasero.", correct: "V"},
+{question: "N_0 = Sumatoria K, i=1 de V_i * N_i", correct: "F"},
+{question: "A la hora de escoger un servidor ateniéndonos únicamente al valor de la relación prestaciones/coste, es mejor escoger la versión con un valor numérico mayor.", correct: "V"},
+{question: "Los procesadores Intel Core están especialmente diseñados para placas con dos o más zócalos de CPU.", correct: "F"},
+{question: "La primera arquitectura comercial de procesadores de 64 bits surgió en 2003 de la mano de AMD.", correct: "F"},
+{question: "Una memoria DRAM necesita refresco porque es volátil.", correct: "V"},
+{question: "Decimos que un módulo de DRAM tiene dos rangos si tiene chips por las dos caras.", correct: "F"},
+{question: "NCQ (Native Command Queuing) es una extensión de SATA concebida especialmente para optimizar el acceso a unidades de estado sólido.", correct: "F"},
+{question: "Un determinado monitor software por muestreo se activa cada 5s. Cada activación del monitor (para medir lo que tenga que medir) requiere un total de 6 ms de uso de la única CPU de nuestro servidor. Entonces, la sobrecarga de CPU del monitor será 0,0012%.", correct: "F"},
+{question: "El índice SPEC no tiene unidades.", correct: "V"},
+
+
+
+    { "question": "Un disco duro SAS se conecta con un único cable a la placa base.", "correct": "F" },
+    { "question": "En análisis operacional Li siempre es menor que Ai.", "correct": "F" },
+    { "question": "Un monitor por muestreo se basa en información estadística", "correct": "V" },
+    { "question": "Los procesadores que entran en un zócalo PGA tienen patillas.", "correct": "V" },
+    { "question": "El teorema del Límite central nos dice que la media de un conjunto grande de muestras aleatorias de cualquier distribución e independientes entre sí pertenece a una distribución t-student.", "correct": "F" },
+    { "question": "El teorema del Límite central nos dice que la media de un conjunto grande de muestras aleatorias de cualquier distribución e independientes entre sí pertenece a una distribución normal.", "correct": "V" },
+    { "question": "Ro-min es la suma de las demandas de servicio de las estaciones del servidor.", "correct": "F" },
+    { "question": "En un call graph, las flechas indican el número de veces que una función llama a otra. Este número siempre es un entero", "correct": "V" },
+    { "question": "RAID 5 distribuye bits de redundacia entre varios discos", "correct": "V" },
+    { "question": "Una placa base es un SOC.", "correct": "F" },
+    { "question": "Un sistema escalable es extensible: ", "correct": " V" },
+    { "question": "Si conecto un periférico plug & play puedo usarlo directamente sin reiniciar", "correct": "V" },
+    { "question": "Una celda de memoria SRAM tiene más componentes que una DRAM", "correct": "V" },
+    { "question": "Un modelo de memoria RAM con chips en ambas caras tiene dos rangos", "correct": "F" },
+    { "question": "El valor de un resultado peak de SPEC SPEED son siempre menores que el resultado base", "correct": "F" },
+    { "question": "Un servidor en una red cerrada( con colas lo suficientemente grandes) siempre está en equilibrio de flujo", "correct": "V" },
+{ question: "Valgrind es un ejemplo de monitor", correct: " F" },
+{ question: "GPROF requiere instrumentalizar el programa a monitorizar", "correct": "V" },
+{ question: "PERF requiere instrumentalizar el programa a monitorizar", "correct": "F" },
+{question: "top es un monitor interactivo", "correct": "V" },
 {question: "Un módulo de DRAM con chips en ambas caras no tiene por qué ser de doble rango (dual ranked)", correct: "V"},
 {question: "Con almacenamiento permanente queremos indicar que el dispositivo es de solo lectura y que el dato se va a quedar escrito en el dispositivo de forma permanente", correct: "F"},
 {question: "Con un conector SATA de la placa base puedo conectar 4 discos mini SAS", correct: "F"},
@@ -180,11 +222,40 @@ const allQuestions = [
 {question: "En el panel trasero de la placa base de un servidor es habitual encontrar varios conectores para Ethernet", correct: "V"},
 {question: "Si la sumatoria de i=1 hasta k de Ui > 1 el servidor está saturado", correct: "F"},
 
+{ "question": "El tiempo de respuesta es la inversa de la productividad.", "correct": "F" },
 
 
 
 
 
+{question: "PCIe permite la conexión serie punto a punto, una comunicación de tipo full-duplex y la conexión de dispositivos en caliente", correct: "V"},
+{question: "Una determinada hebra de código se ejecuta en un servidor durante 100s. De esos 100s, el 30% transcurre accediendo al disco duro y el resto transcurre ejecutando instrucciones en la CPU. Si reemplazamos ahora esa CPU por otra el doble de rápida, la hebra se ejecuta en Tm segundos. Indique si es verdadera o falsa la siguiente afirmación: Tras la mejora, el tiempo que pasa la hebra accediendo al disco duro supone un 60% de Tm", correct: "F"},
+{question: "El uso de Cloud Computing y de la virtualización facilita el diseño de servidores escalables.", correct: "V"},
+{question: "Si la ganancia en velocidad (speedup o aceleración) entre dos servidores para un determinado programa es mayor que 0, es razonable concluir que uno de los servidores es más rápido que el otro para ese programa.", correct: "F"},
+{question: "Con un benchmark especializado en DRAM puedo diagnosticar el correcto funcionamiento de un módulo de DRAM.", correct: "F"},
+{question: "En una red de colas cerrada interactiva se cumple que: NT = X0max × (R0min + Z)", correct: "F"},
+{question: "Las memorias de tipo U-DIMM, al carecer de buffer/registro interno, son las que permiten albergar la mayor cantidad de memoria por módulo", correct: "F"},
+{question: "El puente sur del chipset se encarga de las líneas de PCIe x16", correct: "F"},
+{question: "En una red abierta en equilibrio de flujo se cumple que R0 = R1 + R2 +…+ RK, siendo K el número de estaciones de servicio de nuestro modelo.", correct: "F"},
+{question: "En Linux, el profiler gprof utiliza monitorización por muestreo para estimar el tiempo de CPU que consume cada función de nuestro programa escrito en C.", correct: "V"},
+{question: "Cuando comparamos tiempos de ejecución, expresados en segundos, de programas ejecutados en servidores utilizando el test t, el estadístico texp también se puede expresar en segundos.", correct: "F"},
+{question: "La tasa media de llegada de peticiones a un servidor no puede ser superior a 1/Db, siendo Db la demanda media de servicio del cuello de botella.", correct: "F"},
+{question: "Es posible conectar unidades de almacenamiento con interfaz SATA a una placa base con conectores SAS", correct: "V"},
+{question: "SSD procede de las siglas Solid State Disk.", correct: "F"},
+{question: "Si el servidor A es un 50% más rápido que el servidor B en ejecutar un determinado programa de benchmark, entonces podemos decir igualmente que el servidor B es un 50% más lento que el servidor A en ejecutar dicho programa de benchmark.", correct: "F"},
+{question: "Las memorias con ECC se usan para aumentar la disponibilidad de un servidor.", correct: "F"},
+{question: "La frecuencia de reloj de las CPU sigue todavía incrementándose de forma exponencial con los años.", correct: "F"},
+{question: "Las DRAM, a diferencia de las SRAM, necesitan refresco.", correct: "V"},
+{question: "Time skew es un protocolo de comunicación paralelo", correct: "F"},
+{question: "Es muy importante en las placas de servidores que los conectores de audio y vídeo del panel trasero sean de altas prestaciones", correct: "F"},
+{question: "Sar es un monitor de actividad software por muestreo", correct: "V"},
+{question: "Si el servidor A es el doble de rápido que el servidor B para todos los programas de un benchmark cuyo rendimiento se calcula según el criterio SPEC, entonces ese índice SPEC del servidor A será mayor que el del servidor B, independientemente de la máquina de referencia elegida", correct: "V"},
+{question: "El conjunto de instrucciones que ejecutan el auto-test de arranque (Power On self-test) se encuentran almacenadas en las primeras direcciones de la DRAM", correct: "F"},
+{question: "Una red de colas abierta se puede considerar un caso particular de red de colas cerrada si hacemos que Z=0s", correct: "F"},
+{question: "Si aplicamos la ley de Little a los usuarios en reflexión de una red de colas cerrada interactiva, podemos relacionar el número medio de usuarios en reflexión con la productividad media del servidor y el tiempo medio de reflexión de dichos usuarios", correct: "V"},
+{question: "Si un servidor web ha recibido una media de 10 visitas por segundo, entonces la razón media de visita del servidor es 10 tr/s", correct: "F"},
+{question: "Si añadimos una segunda CPU a nuestro servidor, idéntica a la ya existente, es razonable suponer que la razón media de visita de la primera CPU se va a dividir por dos.", correct: "V"},
+{question: "Wi = Ni*Si es una ley operacional válida para servidores modelados mediante una red de colas abierta en equilibrio de flujo.", correct: "F"},
 
 {question: "Si un módulo DRAM tiene chips en ambas caras se denomina módulo con 2 rangos.", correct: "F"},
 {question: "Un módulo de DRAM DDR4 con ECC 2Rx4 tiene 36 chips.", correct: "V"},
