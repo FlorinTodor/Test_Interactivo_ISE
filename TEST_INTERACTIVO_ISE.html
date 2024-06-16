@@ -187,7 +187,7 @@ const allQuestions = [
 {   question: "El índice SPEC no tiene unidades.", correct: "V"},
 {   question: "Es mejor comprar un servidor con una relación prestaciones/coste con un valor inferior a la de otro servidor", correct: "F"},
 {   question: "El índice SPEC premia mejoras sustanciales con respecto a algún programa del benchmark y no castiga al mismo nivel los empeoramientos.", correct: "V"},
-
+{   question: "Un mismo servidor, según su tipo de carga, puede tener distintos cuellos de botella", correct: "V"},
 
 
 
@@ -222,6 +222,7 @@ const allQuestions = [
 {   question: "En un servidor, si la demanda de servicio de un dispositivo es menor que la de otro, su utilización nunca podrá ser mayor que la de ese otro dispositivo", correct: "V"},
 {   question: "La razón media de visita de un dispositivo no tiene por qué ser necesariamente un número entero no negativo. Nota: números enteros no negativos son: 0, 1, 2, 3, ...", correct: "V"},
 {   question: "En un servidor modelado mediante una red de colas se cumple que Bi = (Ni- Qi) * T", correct: "V"},
+{   question: "En un servidor modelado mediante una red abierta la tasa media de llegada no puede superar 1/Db", correct: "F"},
 {   question: "La memoria técnica que presenta cada licitador no podrá hacer referencia a una fabricación o una procedencia determinada con la finalidad de favorece o descarta ciertas empresas o ciertos podructos. Si no es posible, se acompañará la mención << o equivalente>>.", correct: "V"},
 {   question: "En el panel trasero de la placa base de un servidor es habitual encontrar varios conectores para Ethernet", correct: "V"},
 {   question:  "Si Σ_{i=1}^K U_i > 1 el servidor está saturado", correct: "F"},
@@ -235,9 +236,9 @@ const allQuestions = [
 { question: "Las fuentes de alimentación actuales son reemplazables en caliente (hot swappable).", correct: "V" },
 { question: "Las fuentes de alimentación redundantes se consideran en el arranque proceso de las fuentes principales..", correct: "F" },
 
+{ question: "Si reemplazamos un dispositivo por otro el doble de rápido, su razón de visita será menor", correct: "F" },
 
-
-
+{ question: "Uno de los inconvenientes de utilizar la media aritmética de los tiempos de ejecución de los programas de un benchmark es que su valor dependerá de la máquina de referencia que se escoja", correct: "F" },
 
 {   question: "PCIe permite la conexión serie punto a punto, una comunicación de tipo full-duplex y la conexión de dispositivos en caliente", correct: "V"},
 {   question: "Una determinada hebra de código se ejecuta en un servidor durante 100s. De esos 100s, el 30% transcurre accediendo al disco duro y el resto transcurre ejecutando instrucciones en la CPU. Si reemplazamos ahora esa CPU por otra el doble de rápida, la hebra se ejecuta en Tm segundos. Indique si es verdadera o falsa la siguiente afirmación: Tras la mejora, el tiempo que pasa la hebra accediendo al disco duro supone un 60% de Tm", correct: "F"},
@@ -265,6 +266,8 @@ const allQuestions = [
 {question: "Una red de colas abierta se puede considerar un caso particular de red de colas cerrada si hacemos que Z=0s", correct: "F"},
 {question: "Si aplicamos la ley de Little a los usuarios en reflexión de una red de colas cerrada interactiva, podemos relacionar el número medio de usuarios en reflexión con la productividad media del servidor y el tiempo medio de reflexión de dichos usuarios", correct: "V"},
 {question: "Si un servidor web ha recibido una media de 10 visitas por segundo, entonces la razón media de visita del servidor es 10 tr/s", correct: "F"},
+{question: "Si aplicamos la Ley de Little a la cola de una estación de servicio obtenemos que Ui = Xi* Si", correct: "F"},
+
 {question: "Si añadimos una segunda CPU a nuestro servidor, idéntica a la ya existente, es razonable suponer que la razón media de visita de la primera CPU se va a dividir por dos.", correct: "V"},
 {question: "Wi = Ni*Si es una ley operacional válida para servidores modelados mediante una red de colas abierta en equilibrio de flujo.", correct: "F"},
 
@@ -284,6 +287,7 @@ const allQuestions = [
 {question: "El protocolo USB 2.0 es half-duplex", correct: "V"},
 {question: "El puente sur del chipset es el encargado de las transferencias entre el puente norte y el resto de periféricos con menores exigencias de velocidad de la placa.", correct: "V"},
 {question: "En un test t, el valor-p equivale esencialmente a la probabilidad de que la hipótesis nula sea falsa.", correct: "F"},
+{question: "En un test t, a mayor nivel de confianza es más fácil rechazar la hipótesis de que ambas alternativas son iguales", correct: "F"},
 {question: "La hipótesis de partida de un test ANOVA es que el factor que se está estudiando influye en el rendimiento.", correct: "F"},
 {question: "Con “sar -u”, sin más argumentos, iremos obteniendo la información de la utilización global del procesador desde el momento actual en adelante.", correct: "F"},
 {question: "Un microbenchmark también suele denominarse benchmark de sistema completo.", correct: "F"},
@@ -307,6 +311,7 @@ const allQuestions = [
 {question: "Es el propio microprocesador de muchas placas bases actuales el que realiza la función de puente norte del chipset.", correct: "V"},
 {question: "Para diagnosticar si una memoria RAM funciona correctamente debemos utilizar un benchmark específico para memorias RAM.", correct: "F"},
 {question: "Si NT >> NT* el servidor dejará de estar en equilibrio de flujo (para el caso de redes cerradas).", correct: "F"},
+{question: "Si NT >> NT* el servidor está saturado (para el caso de redes de colas cerradas)", correct: "F"},
 {question: "Las principales medidas de prestaciones se basan en tiempos de respuesta (o latencias) y en productividades (o anchos de banda). ", correct: "V"},
 {question: "Todos los sistemas escalables son extensibles pero no a la inversa.", correct: "V"},
 {question: "Xeon es una familia de procesadores de IBM especialmente dirigida a servidores.", correct: "F"},
@@ -320,6 +325,7 @@ const allQuestions = [
 {question: "La pila que hay en la placa base sirve, entre otras cosas, para tener el reloj en tiempo real de dicha placa actualizado.", correct: "V"},
 {question: "Existen servidores con fuentes de alimentación remplazables en caliente (hot swappable).", correct: "V"},
 {question: "El puente sur del chipset se encarga de la comunicación con la DRAM.", correct: "F"},
+{question: "El puente sur del chipset se encarga de la comunicación con la RAM.", correct: "F"},
 {question: "En saturación, el cuello de botella está al máximo de su productividad.", correct: "V"},
 {question: "Si la suma de todas las utilizaciones es mayor que 1 el servidor está saturado.", correct: "F"},
 {question: "R0 = R1+R2+…Rk.", correct: "F"},
@@ -349,6 +355,7 @@ const allQuestions = [
 {question: "Jugando con las distintas configuraciones de un RAID se puede conseguir más fiabilidad o más disponibilidad pero no mayores prestaciones.", correct: "F"},
 {question: "SATA-3 usa codificación 128b/130b.", correct: "F"},
 {question: "Sar es un monitor software por eventos.", correct: "F"},
+{question: "Una máquina con un SPEC menor que 1 significa que es más rápida que la máquina de referencia", correct: "F"},
 
 {question: "El fenómeno llamado “timing skew” motivó la aparición de protocolos paralelos como P-ATA (también llamado IDE) o PCI.", correct: "F"},
 {question: "Las primeras instrucciones que ejecuta un procesador en el arranque proceden de las primeras direcciones de la DRAM.", correct: "F"},
@@ -357,7 +364,9 @@ const allQuestions = [
 { question: "Es frecuente que las placas de servidores tengan un conectar VGA en el panel trasero", correct: "V" },
 { question: "La utilidad principal de las unidades de cinta en servidores es par almacenamiento de respaldo backup y archivado", correct: "V" },
 { question: "En un test ANOVA, si Fexp es mayor que el grado de significatividad concluiremos que no podemos decir que el factor a considerar influya en la variable respuesta", correct: "F" },
+{ question: "En un test ANOVA, si Fexp es menor que el grado de significatividad rechazamos la hipótesis nula y concluiremos que el factor a considerar sí que influye en la variable respuesta", correct: "F" },
 { question: "En la monitorización de un servidor durante un tiempo T, C0 no puede ser mayor que A0.", correct: "F" },
+{ question: "Con sar -u iremos obteniendo la información de la utilización del procesador desde el momento actual en adelante.", correct: "F" },
 
 { question: "Ri=Wi+Qi, para todo i=1..K", correct: "F" },
 { question: "La cola/pasta térmica es un aislante que evita que el calor salga de la CPU.", correct: "F" },
@@ -367,6 +376,18 @@ const allQuestions = [
 { question: "El material de las cintas de frenado es una resina no conductora y no inflamable.", correct: "F" },
 { question: "Los sistemas informáticos necesitan para su funcionamiento la transición de señal de reloj", correct: "F" },
 { question: "Los discos de almacenamiento de tipo PCIe se usan en la misma ranura que los de tipo SATA", correct: "V" },
+{ question: "Las unidades SSD tienen mayor latencia que los discos duros debido a que no tienen que esperar a que el cabezal se posicione sobre la pista a leer/escribir ", correct: "F" },
+{ question: "Las pistas en una placa base están normalmente hechas de cobre rodeadas de láminas de un substrato no conductor.", correct: "V" },
+{ question: "El número medio de trabajos en un servidor es la suma de los números medios de trabajos en cada uno de sus componentes.", correct: "V" },
+{ question: "Las unidades SSD son capaces de alcanzar anchos de banda superiores a los que el protocolo SATA- 3 puede proporcionar.", correct: "V" },
+{ question: "En los paneles traseros de las placas de servidores los conectores de red son de bajas prestaciones. ", correct: "F" },
+{ question: " La productividad de un servidor nunca podrá ser superior a 1/D. ", correct: "F" },
+{ question: " Intel Xeon es la familia de microprocesadores de Intel especializada en servidores. ", correct: "V" },
+{ question: " Los procesadores AMD Opteron Serie A están basados en microprocesadores de ARM. ", correct: "V" },
+{ question: " λi=Qi/Wi. ", correct: "V" },
+
+
+
 ];
 
 
