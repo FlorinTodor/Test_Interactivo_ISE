@@ -165,29 +165,78 @@ const allQuestions = [
 
 
     /// RESPONDIDAS
-    { question: "Puedo colocar una PCIe x16 en una x4 pero no al revés", correct: "" },
-    { question: "MTTF significa Mean Time To failure ", correct: "" },
-    { question: "PCI soporta HotPlugging", correct: "" },
-    { question: "Ultra-SCSI no soporta full-duplex", correct: "" },
-    { question: "La ROM tiene el código para instalar los drivers que se usarán por el SO", correct: "" },
-    { question: "El Server Blade es más simple que el Blade Server", correct: "" },
-    { question: "Los procesador Opteron son los procesadores de Intel para servidores", correct: "" },
-    { question: "USB 2.0 es FULL-duplex", correct: "" },
-    { question: "El puente norte del chipset es el que se encarga de las tranferencias de alta velocidad", correct: "" },
-    { question: "Llamamos rango a cada una de las caras de un módulo de memoria RAM", correct: "" },
-    { question: "La anchura de entrada de un monitor es la frecuencia máxima de la ocurrencia de los eventos", correct: "" },
-    { question: "En gprof la columna self de cada función incluye el tiempo del código propio (incluyendo el tiempo que tardan sus hijos en ejecutarse)", correct: "" },
-    { question: "Gprof da información exacta (no estimada) del tiempo de ejecución de cada función de un programa instrumentado por esta herramienta", correct: "" },
+  
+    
+    
+    
+   
+   
+   
+
+
+
+        
+    
+    
+    
+    
+    
+    
+   
+   
+   
+   
+
+    
+    //REVISION
+    /*
+    { question: "El Server Blade es más simple que el Blade Server", correct: "V" },
     {question: "Si añado una nueva CPU a nuestro servidor, el tiempo mínimo medio de respuesta del servidor seguro que disminuye", correct: ""},
     {question: "El tiempo de respuesta medio de un servidor es la suma de los tiempos de respuesta de las estaciones de servicio", correct: ""},
-    {question: "Si lanzo dos dados (sin trucar) muchas veces, la media de la diferencia entre los valores de sus lanzamientos debería tender a 0", correct: ""},
-    {question: "SPECrate, a diferencia de SPECspeed, mide cuantos programas se ejecutan por unidad de tiempo", correct: ""},
-    {question: "En un call graph, las flechas indican el número de veces que una función llama a otra. Este número siempre es un entero.", correct: ""},
-    {question: "Medir las MIPS es un buen índice de rendimiento.", correct: ""},
-    {question: "Un monitor por eventos siempre da información exacta.", correct: ""},
-    {question: "La versión serie del interfaz SCSI se llama M.2", correct: ""},
-    {question: "Si un servidor siempre responde a nuestras peticiones podemos decir que es un servidor de alta fiabilidad ", correct: ""},
-    {question: "Z = Nz* Ro", correct: ""},
+    {question: "La anchura de entrada de un monitor es la frecuencia máxima de la ocurrencia de los eventos", correct: "F" },*/
+    
+    //BIEN
+    { question: "Puedo colocar una PCIe x16 en una x4 pero no al revés", correct: "F" },
+   
+   
+   { question: "MTTF significa Mean Time To failure ", correct: "V" },
+   { question: "PCI soporta HotPlugging", correct: "F" },
+   { question: "PCI soporta PLUG&PLAY", correct: "V" },
+   { question: "PCI es half-duplex", correct: "V" },
+   { question: "AGP es half-duplex", correct: "V" },
+   { question: "PCIe es full-duplex", correct: "V" },
+   { question: "PCIe es HotPlugging", correct: "V" },
+   
+   { question: "Puedo usar una tarjeta con más o menos LANES que el conector PCIe de la placa base", correct: "V" },
+   
+    { question: "Ultra-SCSI no soporta full-duplex", correct: "V" },
+    { question: "SCSI tiene conexión paralela", correct: "V" },
+    { question: "SAS tiene conexión en serie", correct: "V" },
+    { question: "Ultra-SCSI soporta half-duplex", correct: "V" },
+    { question: "SCSI Y SAS soportan HOT-PLUGGING", correct: "V" },
+
+    { question: "Ultra-SCSI no soporta full-duplex", correct: "V" },
+    { question: "La ROM tiene el código para instalar los drivers que se usarán por el SO", correct: "V" },
+    { question: "Los procesador Opteron son los procesadores de Intel para servidores", correct: "F" },
+    { question: "USB 2.0 es FULL-duplex", correct: "F" },
+    { question: "El puente norte del chipset es el que se encarga de las tranferencias de alta velocidad", correct: "V" },
+    { question: "Llamamos rango a cada una de las caras de un módulo de memoria RAM", correct: "F" },
+    {question: "Gprof da información exacta (no estimada) del tiempo de ejecución de cada función de un programa instrumentado por esta herramienta", correct: "F" },
+    {question: "Si lanzo dos dados (sin trucar) muchas veces, la media de la diferencia entre los valores de sus lanzamientos debería tender a 0", correct: "V"},
+    {question: "SPECrate, a diferencia de SPECspeed, mide cuantos programas se ejecutan por unidad de tiempo (productividad)", correct: "V"},
+    {question: "SPECspeed, a diferencia de SPECrate, cuánto tarda en ejecutarse un programa (tiempo de respuesta)", correct: "V"},    
+    {question: "Medir las MIPS es un buen índice de rendimiento.", correct: "F"},
+    {question: "Un monitor por eventos siempre da información exacta.", correct: "V"}, 
+    {question: "Si un servidor siempre responde a nuestras peticiones podemos decir que es un servidor de alta fiabilidad ", correct: "F"},
+    {question: "Z = Nz* Ro", correct: "F"},
+    {question: "La interfaz Serial ATA es compatible con SAS. Dicho de otra manera, si tengo una placa con conectores Serial ATA voy a poder pinchar en ella unidades SAS.", correct: "F"},
+    {question: "Los paneles traseros de placas de servidores suelen tener conectores de audio y vídeo de altas prestaciones.", correct: "F"},
+    {question: "La expresión N0 = X0 * R0 sólo es válida si el servidor no está saturado", correct: "V"},
+    {question: "La expresión Ui= Xi*Si sólo es valida si el servidor no está saturado. ", correct: "F"},
+    {question: "El resultado de un benchmark siempre se expresa como el tiempo necesario para ejecutar una cantidad pre-establecida de tareas", correct: "F"},
+    { question: "En gprof la columna self de cada función incluye el tiempo del código propio (incluyendo el tiempo que tardan sus hijos en ejecutarse)", correct: "F" },
+    { question: "En gprof la columna self de cada función incluye el tiempo del código propio", correct: "V" },
+
 
 
 
