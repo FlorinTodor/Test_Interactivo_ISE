@@ -196,10 +196,49 @@ const allQuestions = [
     {question: "La anchura de entrada de un monitor es la frecuencia máxima de la ocurrencia de los eventos", correct: "F" },*/
     
     //BIEN
+
+
+
+    { question: "El chipset es un circuito integrado que se encarga de la comunicación entre la CPU, la RAM, el almacenamiento y otros periféricos", correct: "V" },
+    { question: "Podemos aumentar la disponibilidad de un servidor añadiendo fuentes de alimentación redundantes.", correct: "V" },
+    { question: "En 2004 los Opteron fueron los primeros procesadores x86 con 2 núcleos.", correct: "V" },
+
+    { question: "MTBF significa Mean Time Between Failures ", correct: "V" },
+    { question: "FIT significa Failures in Time.", correct: "V" },
+    { question: "AFR: Annualized failure rate", correct: "V" },
+    { question: "MTTF significa Mean Time To failure ", correct: "V" },
+    { question: "ESD significa Electrostatic discharge ", correct: "V" },
+    { question: "SSD significa Solid State Drive", correct: "V" },
+    { question: "NVME significa Non Volatile Memory Express", correct: "V" },
+    { question: "PM significa Page Mode ", correct: "V" },
+    { question: "DRAM significa Dynamic Random Access Memory ", correct: "V" },
+    { question: "SDRAM significa Synchronous DRAM; ", correct: "V" },
+    { question: "DDR significa Double Data Rate ", correct: "V" },
+    { question: "EDO significa Extended Data Out ", correct: "V" },
+    { question: "SIPP:  significa Single In-line Pin Package", correct: "V" },
+    { question: "ATA  significa Advanced Technology Attachment", correct: "V" },
+    { question: "SATA  significa Serial Advanced Technology Attachment", correct: "V" },
+    { question: "SCSI  significa Small Computer System Interface", correct: "V" },
+    { question: "USB  significa Universal Serial Bus", correct: "V" },
+    { question: "SIMM:  significa Single In-line Memory Module ", correct: "V" },
+    { question: "DIMM:  significa Dual In-line Memory Module ", correct: "V" },
+    
+    { question: "R-DIMM tiene menor latencia que EU-DIMM ", correct: "F" },
+    { question: "SoC significa System on a chip ", correct: "F" },
+    { question: "SoC contiene el chipset y otras características ", correct: "V" },
+
+
+
+    { question: " Frotándose las manos se elimina la electricidad estática ", correct: "F" },
+
+
+
+    { question: "Decimos que un servidor se encuentra disponible si está en estado operativo", correct: "V" },
+
     { question: "Puedo colocar una PCIe x16 en una x4 pero no al revés", correct: "F" },
    
     {question: "El Server Blade es más simple que el Blade Server", correct: "V" },
-   { question: "MTTF significa Mean Time To failure ", correct: "V" },
+   
    { question: "PCI soporta HotPlugging", correct: "F" },
    { question: "PCI soporta PLUG&PLAY", correct: "V" },
    { question: "PCI es half-duplex", correct: "V" },
@@ -256,7 +295,8 @@ const allQuestions = [
 {   question: "A la hora de escoger un servidor ateniéndonos únicamente al valor de la relación prestaciones/coste, es mejor escoger la versión con un valor numérico mayor.", correct: "V"},
 {   question: "Los procesadores Intel Core están especialmente diseñados para placas con dos o más zócalos de CPU.", correct: "F"},
 {   question: "La primera arquitectura comercial de procesadores de 64 bits surgió en 2003 de la mano de AMD.", correct: "F"},
-{   question: "Una memoria DRAM necesita refresco porque es volátil.", correct: "V"},
+{   question: "La primera arquitectura de procesadores ,para servidores, de 64 bits surgió en 2003 de la mano de AMD.", correct: "V"},
+{   question: "Una memoria DRAM necesita refresco porque es volátil.", correct: "F"},
 {   question: "Decimos que un módulo de DRAM tiene dos rangos si tiene chips por las dos caras.", correct: "F"},
 {   question: "NCQ (Native Command Queuing) es una extensión de SATA concebida especialmente para optimizar el acceso a unidades de estado sólido.", correct: "F"},
 {   question: "Un determinado monitor software por muestreo se activa cada 5s. Cada activación del monitor (para medir lo que tenga que medir) requiere un total de 6 ms de uso de la única CPU de nuestro servidor. Entonces, la sobrecarga de CPU del monitor será 0,0012%.", correct: "F"},
@@ -286,7 +326,7 @@ const allQuestions = [
 { question: "Valgrind es un ejemplo de monitor", correct: "F" },
 { question: "GPROF requiere instrumentalizar el programa a monitorizar", correct: "V" },
 { question: "PERF requiere instrumentalizar el programa a monitorizar", correct: "F" },
-{   question: "top es un monitor interactivo", "correct": "V" },
+{   question: "top es un monitor interactivo", correct: "V" },
 {   question: "Un módulo de DRAM con chips en ambas caras no tiene por qué ser de doble rango (dual ranked)", correct: "V"},
 {   question: "Con almacenamiento permanente queremos indicar que el dispositivo es de solo lectura y que el dato se va a quedar escrito en el dispositivo de forma permanente", correct: "F"},
 {   question: "Con un conector SATA de la placa base puedo conectar 4 discos mini SAS", correct: "F"},
@@ -382,7 +422,7 @@ const allQuestions = [
 {question: "AMD ofrece los procesadores EPYC para el mercado de sobremesa y OPTERON para servidor.", correct: "F"},
 {question: "SO-DIMM es un tipo de memoria pensada para servidores.", correct: "F"},
 {question: "En la jerarquía de memoria de un computador, la memoria LLC tiene menor latencia que la DRAM.", correct: "V"},
-
+{question: "Podemos mejorar la disponibilidad de un servidor utilizando RAID 1", correct: "V"},
 {question: "Es el propio microprocesador de muchas placas bases actuales el que realiza la función de puente norte del chipset.", correct: "V"},
 {question: "Para diagnosticar si una memoria RAM funciona correctamente debemos utilizar un benchmark específico para memorias RAM.", correct: "F"},
 {question: "Si NT >> NT* el servidor dejará de estar en equilibrio de flujo (para el caso de redes cerradas).", correct: "F"},
@@ -445,6 +485,7 @@ const allQuestions = [
 {question: "Las primeras instrucciones que ejecuta un procesador en el arranque proceden de las primeras direcciones de la DRAM.", correct: "F"},
 {question: "Una de las líneas del protocolo PCIe se usa en exclusiva para transmitir la señal del reloj.", correct: "F"},
 {question: "eDonkey es un ejemplo de Arquitectura Cliente/Servidor de varios niveles.", correct: "F"},
+{question: "eDonkey es un ejemplo de Arquitectura Cliente-Cola-Cliente de varios niveles.", correct: "V"},
 { question: "Es frecuente que las placas de servidores tengan un conectar VGA en el panel trasero", correct: "V" },
 { question: "La utilidad principal de las unidades de cinta en servidores es par almacenamiento de respaldo backup y archivado", correct: "V" },
 { question: "En un test ANOVA, si Fexp es mayor que el grado de significatividad concluiremos que no podemos decir que el factor a considerar influya en la variable respuesta", correct: "F" },
@@ -468,6 +509,7 @@ const allQuestions = [
 { question: " La productividad de un servidor nunca podrá ser superior a 1/D. ", correct: "F" },
 { question: " Intel Xeon es la familia de microprocesadores de Intel especializada en servidores. ", correct: "V" },
 { question: " Los procesadores AMD Opteron Serie A están basados en microprocesadores de ARM. ", correct: "V" },
+{ question: " Los procesadores AMD Opteron Serie X están basados en APU ( integran CPU y GPU en un mismo chip). ", correct: "V" },
 { question: " λi=Qi/Wi. ", correct: "V" },
 
 
