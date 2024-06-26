@@ -197,8 +197,9 @@ const allQuestions = [
     
     //BIEN
 
-
-
+    
+{ question: "La demanda de servicio de un dispositivo es el tiempo medio que dedica el dispositivo en servir cada trabajo que realiza:", correct: "F" },
+{ question: "La demanda de servicio de un dispositivo es el tiempo medio que dedica a cada dispositivo de todos los trabajos", correct: "V" },
     { question: "El chipset es un circuito integrado que se encarga de la comunicación entre la CPU, la RAM, el almacenamiento y otros periféricos", correct: "V" },
     { question: "Podemos aumentar la disponibilidad de un servidor añadiendo fuentes de alimentación redundantes.", correct: "V" },
     { question: "En 2004 los Opteron fueron los primeros procesadores x86 con 2 núcleos.", correct: "V" },
@@ -222,16 +223,17 @@ const allQuestions = [
     { question: "USB  significa Universal Serial Bus", correct: "V" },
     { question: "SIMM:  significa Single In-line Memory Module ", correct: "V" },
     { question: "DIMM:  significa Dual In-line Memory Module ", correct: "V" },
+    { question: "Al bajar el grado de significatividad, es más difícil conseguir que el valor p < alfa:", correct: "V" },
     
     { question: "R-DIMM tiene menor latencia que EU-DIMM ", correct: "F" },
     { question: "SoC significa System on a chip ", correct: "F" },
     { question: "SoC contiene el chipset y otras características ", correct: "V" },
-
-
-
+    { question: "sar utiliza la información de /proc", correct: "V" },
+    
+    { question: "PCI utiliza como protocolo de comunicación BUS paralelo y PCIE utiliza LANES", correct: "V" },
     { question: " Frotándose las manos se elimina la electricidad estática ", correct: "F" },
-
-
+    { question: " La tasa de llegada puede ser mayor que 1/Db. ", correct: "V" },
+    { question: " La expresión Ni=Xi*Ri solo es válida si el servidor no está saturado. ", correct: "V" },
 
     { question: "Decimos que un servidor se encuentra disponible si está en estado operativo", correct: "V" },
 
@@ -326,7 +328,11 @@ const allQuestions = [
 { question: "Valgrind es un ejemplo de monitor", correct: "F" },
 { question: "GPROF requiere instrumentalizar el programa a monitorizar", correct: "V" },
 { question: "PERF requiere instrumentalizar el programa a monitorizar", correct: "F" },
+{ question: "¿Deben aparecer todas las funciones en Gprof", correct: "F" },
 {   question: "top es un monitor interactivo", correct: "V" },
+{   question: "top es un monitor por eventos", correct: "V" },
+{   question: "Si se ejecuta 2 veces gprof saldrán los mismos valores para el contador C1?", correct: "V" },
+{   question: "Si se ejecuta 2 veces gprof saldrán los mismos valores para el contador C2?", correct: "F" },
 {   question: "Un módulo de DRAM con chips en ambas caras no tiene por qué ser de doble rango (dual ranked)", correct: "V"},
 {   question: "Con almacenamiento permanente queremos indicar que el dispositivo es de solo lectura y que el dato se va a quedar escrito en el dispositivo de forma permanente", correct: "F"},
 {   question: "Con un conector SATA de la placa base puedo conectar 4 discos mini SAS", correct: "F"},
@@ -379,9 +385,11 @@ const allQuestions = [
 {question: "Si el servidor A es el doble de rápido que el servidor B para todos los programas de un benchmark cuyo rendimiento se calcula según el criterio SPEC, entonces ese índice SPEC del servidor A será mayor que el del servidor B, independientemente de la máquina de referencia elegida", correct: "V"},
 {question: "El conjunto de instrucciones que ejecutan el auto-test de arranque (Power On self-test) se encuentran almacenadas en las primeras direcciones de la DRAM", correct: "F"},
 {question: "Una red de colas abierta se puede considerar un caso particular de red de colas cerrada si hacemos que Z=0s", correct: "F"},
+
 {question: "Si aplicamos la ley de Little a los usuarios en reflexión de una red de colas cerrada interactiva, podemos relacionar el número medio de usuarios en reflexión con la productividad media del servidor y el tiempo medio de reflexión de dichos usuarios", correct: "V"},
 {question: "Si un servidor web ha recibido una media de 10 visitas por segundo, entonces la razón media de visita del servidor es 10 tr/s", correct: "F"},
 {question: "Si aplicamos la Ley de Little a la cola de una estación de servicio obtenemos que Ui = Xi* Si", correct: "F"},
+{question: "Si aplicamos la Ley de Little a la cola de una estación de servicio obtenemos que Qi =  λi * Wi", correct: "V"},
 
 {question: "Si añadimos una segunda CPU a nuestro servidor, idéntica a la ya existente, es razonable suponer que la razón media de visita de la primera CPU se va a dividir por dos.", correct: "V"},
 {question: "Wi = Ni*Si es una ley operacional válida para servidores modelados mediante una red de colas abierta en equilibrio de flujo.", correct: "F"},
@@ -400,6 +408,10 @@ const allQuestions = [
 {question: "La ganancia en velocidad siempre es un número comprendido entre 0 y 2, ambos inclusive. ", correct: "F"},
 {question: "Es poco frecuente que las placas de los servidores tengan conectores VGA en el panel trasero.", correct: "F"},
 {question: "El protocolo USB 2.0 es half-duplex", correct: "V"},
+{question: "El protocolo USB es Hot-Plug", correct: "V"},
+{question: "El protocolo USB  3.0 y sus sucesores son Full-duplex", correct: "V"},
+{question: "Si reemplazamos un dispositivo por otro el doble de rápido, su tiempo de servicio será menor", correct: "V"},
+
 {question: "El puente sur del chipset es el encargado de las transferencias entre el puente norte y el resto de periféricos con menores exigencias de velocidad de la placa.", correct: "V"},
 {question: "En un test t, el valor-p equivale esencialmente a la probabilidad de que la hipótesis nula sea falsa.", correct: "F"},
 {question: "En un test t, a mayor nivel de confianza es más fácil rechazar la hipótesis de que ambas alternativas son iguales", correct: "F"},
@@ -475,10 +487,12 @@ const allQuestions = [
 {question: "El módulo regulador de voltaje, entre otras cosas, convierte la corriente alterna en corriente continua.", correct: "F"},
 {question: "Si el número total de usuarios de un servidor modelado mediante una red de colas cerrada interactiva es superior a NT*, entonces el servidor está saturado.", correct: "F"},
 {question: "Las pistas en una placa base están hechas de una resina no conductora y no inflamable.", correct: "F"},
-{question: "La expresión Qi = lamdai * Wi es válida, aunque el servidor esté saturado.", correct: "V"},
+{question: "La expresión Qi = λi * Wi es válida, aunque el servidor esté saturado.", correct: "V"},
 {question: "Jugando con las distintas configuraciones de un RAID se puede conseguir más fiabilidad o más disponibilidad pero no mayores prestaciones.", correct: "F"},
 {question: "SATA-3 usa codificación 128b/130b.", correct: "F"},
 {question: "Sar es un monitor software por eventos.", correct: "F"},
+{question: "Sar es un monitor software por muestreo.", correct: "V"},
+{question: "perf es un monitor software por eventos.", correct: "F"},
 {question: "Una máquina con un SPEC menor que 1 significa que es más rápida que la máquina de referencia", correct: "F"},
 
 {question: "El fenómeno llamado “timing skew” motivó la aparición de protocolos paralelos como P-ATA (también llamado IDE) o PCI.", correct: "F"},
@@ -511,6 +525,7 @@ const allQuestions = [
 { question: " Los procesadores AMD Opteron Serie A están basados en microprocesadores de ARM. ", correct: "V" },
 { question: " Los procesadores AMD Opteron Serie X están basados en APU ( integran CPU y GPU en un mismo chip). ", correct: "V" },
 { question: " λi=Qi/Wi. ", correct: "V" },
+{ question: " Si cambiamos el cuello de botella por un dispositivo 10 veces más rápido, la productividad será 10 veces mejor. ", correct: "F" },
 
 
 
